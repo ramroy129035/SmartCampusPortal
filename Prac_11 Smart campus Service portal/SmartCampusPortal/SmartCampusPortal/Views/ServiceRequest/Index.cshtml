@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SmartCampusPortal.Models.ServiceRequest>
+
+@{
+    ViewData["Title"] = "Campus Service Requests";
+}
+
+<h2 class="text-center mb-4">Smart Campus Service Portal</h2>
+
+<div class="container">
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        Submit New Request
+    </a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Service Type</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.RequestId</td>
+                    <td>@item.StudentName</td>
+                    <td>@item.Email</td>
+                    <td>@item.ServiceType</td>
+                    <td>@item.Description</td>
+                    <td>@item.Status</td>
+                    <td>@item.RequestDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="UpdateStatus"
+                           asp-route-id="@item.RequestId"
+                           class="btn btn-success btn-sm">Complete</a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@item.RequestId"
+                           class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

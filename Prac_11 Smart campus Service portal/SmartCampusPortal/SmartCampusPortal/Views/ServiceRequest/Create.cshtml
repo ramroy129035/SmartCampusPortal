@@ -1,0 +1,46 @@
+﻿@model SmartCampusPortal.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Submit Service Request";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Submit Campus Service Request</h2>
+
+    <div class="card shadow p-4">
+        <form asp-action="Create" method="post">
+
+            <div class="mb-3">
+                <label asp-for="StudentName" class="form-label">Student Name</label>
+                <input asp-for="StudentName" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ServiceType" class="form-label">Service Type</label>
+                <select asp-for="ServiceType" class="form-select" required>
+                    <option value="">Select Service</option>
+                    <option>IT Support</option>
+                    <option>Library Service</option>
+                    <option>Hostel Complaint</option>
+                    <option>Maintenance</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+        </form>
+    </div>
+</div>
